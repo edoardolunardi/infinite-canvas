@@ -3,26 +3,23 @@ import styles from "./style.module.css";
 export function Frame() {
   return (
     <header className={`frame ${styles.frame}`}>
-      <h1 className={styles.frame__title}>Infinite Canvas</h1>
-      <a className={styles.frame__back} href="https://tympanus.net/codrops/?p=106679">
-        Article
+      <h1 className={styles.frame__title}>Immersive Gallery</h1>
+      <a className={styles.frame__back} href="https://nyc.aitinkerers.org/">
+        AI Tinkerers NYC
       </a>
-      <a className={styles.frame__archive} href="https://tympanus.net/codrops/hub/">
-        All demos
+      <a className={styles.frame__archive} href="">
+        Feb 21, 2026
       </a>
-      <a className={styles.frame__github} href="https://github.com/edoardolunardi/infinite-canvas">
-        GitHub
+      <a className={styles.frame__github} href="https://nyc.aitinkerers.org/p/interfaces-hackathon-with-claude">
+        Claude Interface Hackathon
       </a>
-      <div className={styles.frame__credits}>
-        <span>By </span>
-        <a href="https://www.edoardolunardi.dev/">Edoardo Lunardi</a>
-      </div>
+
       <nav className={styles.frame__tags}>
-        <a href="https://tympanus.net/codrops/demos/?tag=scroll">#scroll</a>
-        <a href="https://tympanus.net/codrops/demos/?tag=infinite">#inifinite</a>
-        <a href="https://tympanus.net/codrops/demos/?tag=draggable">#draggable</a>
-        <a href="https://tympanus.net/codrops/demos/?tag=three-js">#three.js</a>
-        <a href="https://tympanus.net/codrops/demos/?tag=webgl">#webgl</a>
+        <span>By</span>
+        <span>Ethel Zhang</span>
+        <span>Enrique Munguia</span>
+        <span>Jean-Ezra Yeung</span>
+        <span>Jing Huang</span>
       </nav>
     </header>
   );
