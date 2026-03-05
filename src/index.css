@@ -20,11 +20,19 @@
   box-sizing: border-box;
 }
 
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
 body {
   margin: 0;
   padding: 0;
   color: var(--color-text);
   background-color: var(--color-background);
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 a {

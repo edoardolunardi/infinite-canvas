@@ -19,8 +19,30 @@
   pointer-events: auto;
 }
 
+.loaderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.progressInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progressNumber {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-loader-bar-fill, #fff);
+}
+
 .progressBarContainer {
-  width: 200px;
+  width: 100%;
   background-color: var(--color-loader-bar-bg);
   height: 4px;
   border-radius: 2px;
@@ -32,4 +54,35 @@
   width: 100%;
   transform-origin: left;
   background-color: var(--color-loader-bar-fill);
+}
+
+.commentContainer {
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.comment {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-loader-text, rgb(101, 82, 60));
+  margin: 0;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.comment.fading {
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

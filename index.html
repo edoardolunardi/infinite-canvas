@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Infinite Canvas | Codrops</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <title>mega maalai | home</title>
   <meta
         name="description"
         content="An infinite 3D canvas built with React Three Fiber for exploring and displaying media in a seamless, immersive space." />
@@ -21,8 +21,35 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <!-- Initial loading state - shown before React loads -->
+    <div id="initial-loader" style="
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      z-index: 10000;
+      font-family: ui-monospace, monospace;
+      color: #666;
+    ">
+      <div style="text-align: center; padding: 2rem;">
+        <div style="margin-bottom: 1rem;">Loading...</div>
+        <div style="font-size: 0.875rem; color: #999;">Please wait</div>
+      </div>
+    </div>
+  </div>
   <script type="module" src="./src/index.tsx"></script>
+  <script>
+    // Remove initial loader once React takes over (fallback in case React fails)
+    setTimeout(function() {
+      var loader = document.getElementById('initial-loader');
+      if (loader) {
+        loader.style.display = 'none';
+      }
+    }, 5000);
+  </script>
 </body>
 
 </html>

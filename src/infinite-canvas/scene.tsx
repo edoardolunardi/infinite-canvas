@@ -209,7 +209,7 @@ function Chunk({
     let canceled = false;
     const run = () => !canceled && setPlanes(generateChunkPlanesCached(cx, cy, cz));
 
-    if (typeof requestIdleCallback !== "undefined") {
+    if (typeof requestIdleCallback !== "undefined" && typeof cancelIdleCallback !== "undefined") {
       const id = requestIdleCallback(run, { timeout: 100 });
 
       return () => {
@@ -301,7 +301,10 @@ function SceneController({ media, onTextureProgress }: { media: MediaItem[]; onT
   const maxProgress = React.useRef(0);
 
   React.useEffect(() => {
-    const rounded = Math.round(progress);
+    // More optimistic progress: show faster loading for better UX
+    // Scale progress to feel faster while textures continue loading in background
+    const scaledProgress = Math.min(100, progress * 1.15);
+    const rounded = Math.round(scaledProgress);
 
     if (rounded > maxProgress.current) {
       maxProgress.current = rounded;
@@ -537,7 +540,13 @@ export function InfiniteCanvasScene({
           camera={{ position: [0, 0, INITIAL_CAMERA_Z], fov: cameraFov, near: cameraNear, far: cameraFar }}
           dpr={dpr}
           flat
-          gl={{ antialias: false, powerPreference: "high-performance" }}
+          gl={{ 
+            antialias: false, 
+            powerPreference: isTouchDevice ? "default" : "high-performance",
+            alpha: false,
+            preserveDrawingBuffer: false,
+            failIfMajorPerformanceCaveat: false
+          }}
           className={styles.canvas}
         >
           <color attach="background" args={[backgroundColor]} />
